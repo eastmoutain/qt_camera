@@ -15,7 +15,22 @@
 #include <QActionGroup>
 #include <QString>
 #include <QWidget>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
+#include <QToolBar>
+#include <QStatusBar>
+#include <QIcon>
 
+#include <QMessageBox>
+
+QT_BEGIN_NAMESPACE
+class QAction;
+class QListWidget;
+class QMenu;
+class QTextEdit;
+class QToolBar;
+QT_END_NAMESPACE
 
 
 class cameral_window : public QMainWindow
@@ -30,6 +45,7 @@ private slots:
 
     void startCamera();
     void stopCamera();
+    void about();
 
 private:
     QWidget *centralwidget;
@@ -39,6 +55,22 @@ private:
     QStackedWidget *stackedWidget;
     QWidget *viewFinderPage;
     QCameraViewfinder *viewFinder;
+
+    QAction *stopCameraAction;
+    QAction *startCameraAction;
+    QAction *exitAction;
+    QAction *aboutAction;
+
+    QMenu *fileMenu;
+    QMenu *aboutMenu;
+
+    QToolBar *fileToolBar;
+    QToolBar *aboutToolBar;
+
+    void createActions();
+    void createMenus();
+    void createToolBars();
+    void createStatusBar();
 };
 
 #endif // CAMERAL_WINDOW_H
